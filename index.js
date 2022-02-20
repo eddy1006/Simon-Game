@@ -35,8 +35,13 @@ function newLevel(){
 }
 
 $(".btn").on("click",function(){
-  if(this.id == arr[user.length]){
-    
+  if(this.id === arr[user.length]){
+    var color = this.id;
+    $("#"+color).addClass("pressed");
+    setTimeout(function (){
+      $("#"+color).removeClass("pressed");
+      console.log(color)
+    },100);
     user.push(this.id);
     if(user.length === arr.length){
       console.log("pattern match");
