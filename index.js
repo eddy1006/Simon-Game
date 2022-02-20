@@ -35,13 +35,9 @@ function newLevel(){
 }
 
 $(".btn").on("click",function(){
+  var color = this.id;
+  userClick(color);
   if(this.id === arr[user.length]){
-    var color = this.id;
-    $("#"+color).addClass("pressed");
-    setTimeout(function (){
-      $("#"+color).removeClass("pressed");
-      console.log(color)
-    },100);
     user.push(this.id);
     if(user.length === arr.length){
       console.log("pattern match");
@@ -51,6 +47,7 @@ $(".btn").on("click",function(){
   }else{
     console.log("reset");
     $("h1").text("Game over! Press A to restart");
+    wrongClick();
     count = 0;
     arr= [];
     user = [];
@@ -59,6 +56,25 @@ $(".btn").on("click",function(){
 
 function clickAnim(color){
   $("."+color).fadeIn(100).fadeOut(100).fadeIn(100);
+  var audio = new Audio("sounds/"+color+".mp3");
+  audio.play();
+}
+
+function wrongClick(){
+  $("body").addClass("game-over");
+  setTimeout(function(){
+    $("body").removeClass("game-over");
+  },200)
+  var audio = new Audio("sounds/wrong.mp3")
+  audio.play();
+}
+
+function userClick(color){
+  $("#"+color).addClass("pressed");
+  setTimeout(function (){
+    $("#"+color).removeClass("pressed");
+    console.log(color)
+  },100);
   var audio = new Audio("sounds/"+color+".mp3");
   audio.play();
 }
