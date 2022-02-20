@@ -42,7 +42,7 @@ $(".btn").on("click",function(){
     if(user.length === arr.length){
       console.log("pattern match");
       user = [];
-      newLevel();
+      setTimeout(newLevel,1000)
     }
   }else{
     console.log("reset");
