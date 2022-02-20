@@ -12,6 +12,7 @@ $(document).keypress(function(event){
 
 function newLevel(){
   count++;
+  $("h1").text("Level " +count);
   var button = Math.floor(Math.random()*4);
   switch(button){
     case 0:
@@ -55,6 +56,7 @@ $(".btn").on("click",function(){
     }
   }else{
     console.log("reset");
+    $("h1").text("Game over! Press A to restart");
     count = 0;
     arr= [];
     user = [];
