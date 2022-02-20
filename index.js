@@ -17,37 +17,26 @@ function newLevel(){
   switch(button){
     case 0:
     arr.push("red");
-    $(".red").css("background-color","black")
-    setTimeout(function(){
-      $(".red").css("background-color","red");
-    },1000)
+    clickAnim("red");
     break;
     case 1:
     arr.push("blue");
-    $(".blue").css("background-color","black")
-    setTimeout(function(){
-      $(".blue").css("background-color","blue");
-    },1000)
+    clickAnim("blue");
     break;
     case 2:
     arr.push("yellow");
-    $(".yellow").css("background-color","black")
-    setTimeout(function(){
-      $(".yellow").css("background-color","yellow");
-    },1000)
+    clickAnim("yellow");
     break;
     case 3:
     arr.push("green");
-    $(".green").css("background-color","black")
-    setTimeout(function(){
-      $(".green").css("background-color","green");
-    },1000)
+    clickAnim("green");
     break;
   }
 }
 
 $(".btn").on("click",function(){
   if(this.id == arr[user.length]){
+    
     user.push(this.id);
     if(user.length === arr.length){
       console.log("pattern match");
@@ -62,3 +51,9 @@ $(".btn").on("click",function(){
     user = [];
   }
 })
+
+function clickAnim(color){
+  $("."+color).fadeIn(100).fadeOut(100).fadeIn(100);
+  var audio = new Audio("sounds/"+color+".mp3");
+  audio.play();
+}
